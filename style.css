@@ -37,12 +37,14 @@ body {
     */
   /*/short hand ou atalho*/
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100%;
 }
 
 #container {
-  width: 360px;
+  width: 100%;
   margin: 56px auto 0;
   padding: 0 24px;
+  max-width: 588px;
 }
 /*Explore a propriedade display no CSS (none, block, inline).
 Entenda como block ocupa toda a largura e empilha, e inline fica lado a lado.
@@ -86,10 +88,13 @@ alinhar elementos inline.*/
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  animation: slide-back 0.4s forwards;
 }
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
+}
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
 }
 #switch span {
   display: block;
@@ -150,4 +155,32 @@ ul li a:hover {
 footer {
   padding: 24px 0;
   text-align: center;
+}
+
+/*media queries*/
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+  .light {
+    --bg-url: url(assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back{
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
 }
